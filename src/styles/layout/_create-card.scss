@@ -1,0 +1,24 @@
+.CardContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: rem(20);
+  margin-bottom: rem(5);
+  //border-bottom: rem(1) solid $color-lineFormulary;
+
+  &__card {
+    font-family: $font-Open;
+    color: $color_gunMetal;
+    font-size: rem(18);
+    font-weight: 600;
+    margin: 0 auto;
+    gap: rem(20);
+  }
+
+  &__url {
+    font-family: $font-Open;
+    font-size: rem(12);
+    font-weight: 600;
+    color: $color-orange;
+    margin: rem(5) auto;
+  }
+}
