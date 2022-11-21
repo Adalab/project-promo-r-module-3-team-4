@@ -1,0 +1,85 @@
+.preview { 
+  background: linear-gradient(to bottom, $color-preview1, $color-preview2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: rem(38);
+  border-radius: rem(6);
+  @include tablet {
+    flex-direction: column;
+    padding-bottom: rem(200);
+    margin-right: rem(30);
+    flex-grow: 1;
+  }
+  @include desktop {   
+    flex-grow: 2;
+  }
+  &__align{
+    min-width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap:rem(30);
+  }
+  &__button {
+    font-family: $font-Open;
+    font-size: rem(12);
+    max-width: rem(80);
+    padding: rem(6);
+    border: solid white rem(1);
+    border-radius: rem(15);
+    background: transparent;  
+    text-transform: uppercase;
+    color: $color_gunMetal;      
+  }
+  &__container {
+    background-color: $color-whireOriginal;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+    margin-bottom: 10%;
+    max-width: rem(240);
+    max-height: rem(340);
+  }
+  &__name {
+    font-family: $font-Mont;
+    font-weight: bold;
+    color: $color-darkGreen;
+    font-size: rem(18);
+    border-left: solid $color-start rem(5);
+    padding-left: rem(15);
+    padding-bottom: rem(5);
+    margin-top: rem(20);
+    text-transform: capitalize;
+  }
+  &__job {
+    font-family: $font-Mont;
+    color: $color_gunMetal;
+    border-left: solid $color-start rem(5);
+    padding-left: rem(15);
+    margin-bottom: rem(10);
+  }
+  &__img {
+    text-align: center;
+    background-repeat: no-repeat;
+    background-image: url(../images/imagen-chica.png);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+  }
+  &__icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: rem(10);
+    padding: rem(10);
+    margin-left: rem(10);
+    margin-bottom: rem(5);
+    &--color {
+      color: $color-darkGreen;
+      border: solid 2px $color-input;
+      border-radius: rem(16);
+      padding: rem(5);
+    }
+  }
+}
