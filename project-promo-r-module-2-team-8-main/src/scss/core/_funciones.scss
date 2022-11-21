@@ -1,5 +1,0 @@
-$defaultFontSize: 16;
-
-@function rem($pixels) {
-    @return ($pixels / $defaultFontSize * 1rem);
-}
