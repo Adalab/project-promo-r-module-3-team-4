@@ -1,8 +1,26 @@
 import '../styles/App.scss';
 import logoCards from '../images/logo-awesome.svg';
 import logoAdalab from '../images/logo-adalab.png';
+import{useState} from 'react';
 
 function App() {
+const [data , setData] = useState ({
+  palette: '1',
+  name: '',
+  job: '',
+  phone: '',
+  email: '',
+  linkedin: '',
+  github: '',
+  photo: '',
+
+});
+const handleInput = (event) => {
+const inputValue = event.target.value; 
+const inputName = event.target.name; 
+setData ({...data,[inputName]:inputValue});
+};
+
   return (
     <div>
       <header className="header">
@@ -16,27 +34,27 @@ function App() {
               Reset
             </button>
             <article className="preview__container js-mother-of-palettes">
-              <h2 className="preview__name">Nombre apellido</h2>
-              <h3 className="preview__job">Front-end unicorn</h3>
+              <h2 className="preview__name">{data.name}</h2>
+              <h3 className="preview__job">{data.job}</h3>
               <div className="preview__img js__profile-image"></div>
               <ul className="preview__icons">
                 <li>
-                  <a href="" className="telephone">
+                  <a href={`tel:${data.phone}`} className="telephone">
                     <i className="fa-solid fa-mobile-screen-button preview__icons--color"></i>
                   </a>
                 </li>
                 <li>
-                  <a href="" target="_blank" className="emailadress">
+                  <a href={`mailto:${data.email}`} target="_blank" className="emailadress">
                     <i className="fa-regular fa-envelope preview__icons--color"></i>
                   </a>
                 </li>
                 <li>
-                  <a href="" target="_blank" className="linkedin">
+                  <a href={data.linkedin} target="_blank" className="linkedin">
                     <i className="fa-brands fa-linkedin-in preview__icons--color"></i>
                   </a>
                 </li>
                 <li>
-                  <a href="" target="_blank" className="github">
+                  <a href={data.github} target="_blank" className="github">
                     <i className="fa-brands fa-github-alt preview__icons--color"></i>
                   </a>
                 </li>
@@ -106,7 +124,7 @@ function App() {
               <i className="fa-solid fa-angle-down legend--arrow--down"></i>
             </div>
 
-            <div className="js-fill collapse">
+            <div className="js-fill">
               <label htmlFor="name" className="fill__label fill__label--name">
                 <span className="fill__label__text--name">
                   {' '}
@@ -118,6 +136,7 @@ function App() {
                   name="name"
                   id="name"
                   placeholder="Ej: Sally Jill"
+                  onChange={handleInput}
                   required
                 />
               </label>
@@ -133,6 +152,7 @@ function App() {
                   name="job"
                   id="job-position"
                   placeholder="Ej: Front-end unicorn"
+                  onChange={handleInput}
                   required
                 />
               </label>
@@ -166,6 +186,7 @@ function App() {
                   name="email"
                   id="email"
                   placeholder="Ej: sally.hill@gmail.com"
+                  onChange={handleInput}
                   required
                 />
               </label>
@@ -179,6 +200,7 @@ function App() {
                   name="phone"
                   id="phone"
                   placeholder="Ej: 555-55-55-55"
+                  onChange={handleInput}
                 />
               </label>
               <label
@@ -193,6 +215,7 @@ function App() {
                   name="linkedin"
                   id="linkedin"
                   placeholder="Ej: linkedin.com/in/sally-hill"
+                  onChange={handleInput}
                   required
                 />
               </label>
@@ -208,6 +231,7 @@ function App() {
                   name="github"
                   id="github"
                   placeholder="Ej: @sally-hill"
+                  onChange={handleInput}
                   required
                 />
               </label>
