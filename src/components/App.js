@@ -1,33 +1,56 @@
 import '../styles/App.scss';
 import logoCards from '../images/logo-awesome.svg';
 import logoAdalab from '../images/logo-adalab.png';
-import{useState} from 'react';
+import { useState } from 'react';
 
 function App() {
-const [data , setData] = useState ({
-  palette: '1',
-  name: '',
-  job: '',
-  phone: '',
-  email: '',
-  linkedin: '',
-  github: '',
-  photo: '',
+  // /****VARIABLES****/
+  const [data, setData] = useState({
+    palette: '1',
+    name: '',
+    job: '',
+    phone: '',
+    email: '',
+    linkedin: '',
+    github: '',
+    photo: '',
+  });
+  // /****END VARIABLES****/
 
-});
-const handleInput = (event) => {
-const inputValue = event.target.value; 
-const inputName = event.target.name; 
-setData ({...data,[inputName]:inputValue});
-};
+  // /*****FUNCIONES MANEJADORAS DE EVENTOS*****/
+  const handleInput = (event) => {
+    const inputValue = event.target.value;
+    const inputName = event.target.name;
+    setData({ ...data, [inputName]: inputValue });
+  };
 
-const previewDefault = (property,defaultText) => {
-  if (data[property]){
-    return data[property];
-      } else {
-    return defaultText;
-      }
-}
+  const handleClickReset = (event) => {
+    event.preventDefault();
+    setData({
+      palette: '1',
+      name: '',
+      job: '',
+      phone: '',
+      email: '',
+      linkedin: '',
+      github: '',
+      photo: '',
+    });
+    //TODO: limpiar los inputs
+    // handleInput(event);
+  };
+  // /*****END FUNCIONES MANEJADORAS DE EVENTOS*****/
+
+  // /*****FUNCIONALIDADES*****/
+  const previewText = (property, defaultText) => {
+    if (data[property]) {
+      return data[property];
+    } else {
+      return defaultText;
+    }
+  };
+
+  // /*****END FUNCIONALIDADES*****/
 
   return (
     <div>
@@ -37,13 +60,17 @@ const previewDefault = (property,defaultText) => {
       <main className="mainCreate">
         <section className="preview ">
           <div className="preview__align">
-            <button className="preview__button">
+            <button className="preview__button" onClick={handleClickReset}>
               <i className="fa-regular fa-trash-can preview__button--can"></i>{' '}
               Reset
             </button>
             <article className="preview__container js-mother-of-palettes">
-              <h2 className="preview__name">{previewDefault('name','Nombre Apellidos')}</h2>
-              <h3 className="preview__job">{previewDefault('job','Front End Developer')}</h3>
+              <h2 className="preview__name">
+                {previewText('name', 'Nombre Apellidos')}
+              </h2>
+              <h3 className="preview__job">
+                {previewText('job', 'Front End Developer')}
+              </h3>
               <div className="preview__img js__profile-image"></div>
               <ul className="preview__icons">
                 <li>
@@ -52,7 +79,10 @@ const previewDefault = (property,defaultText) => {
                   </a>
                 </li>
                 <li>
-                  <a href={`mailto:${data.email}`} target="_blank" className="emailadress">
+                  <a
+                    href={`mailto:${data.email}`}
+                    target="_blank"
+                    className="emailadress">
                     <i className="fa-regular fa-envelope preview__icons--color"></i>
                   </a>
                 </li>
@@ -91,7 +121,7 @@ const previewDefault = (property,defaultText) => {
                     type="radio"
                     name="palette"
                     id="1"
-                    checked
+                    defaultChecked
                     value="1"
                   />
                   <div className="design__palette__green"></div>
