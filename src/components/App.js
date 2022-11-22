@@ -21,6 +21,14 @@ const inputName = event.target.name;
 setData ({...data,[inputName]:inputValue});
 };
 
+const previewDefault = (property,defaultText) => {
+  if (data[property]){
+    return data[property];
+      } else {
+    return defaultText;
+      }
+}
+
   return (
     <div>
       <header className="header">
@@ -34,8 +42,8 @@ setData ({...data,[inputName]:inputValue});
               Reset
             </button>
             <article className="preview__container js-mother-of-palettes">
-              <h2 className="preview__name">{data.name}</h2>
-              <h3 className="preview__job">{data.job}</h3>
+              <h2 className="preview__name">{previewDefault('name','Nombre Apellidos')}</h2>
+              <h3 className="preview__job">{previewDefault('job','Front End Developer')}</h3>
               <div className="preview__img js__profile-image"></div>
               <ul className="preview__icons">
                 <li>
