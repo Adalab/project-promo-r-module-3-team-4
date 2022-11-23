@@ -36,7 +36,7 @@ function App() {
       github: '',
       photo: '',
     });
-    //TODO: limpiar los inputs
+    
     // handleInput(event);
   };
   // /*****END FUNCIONES MANEJADORAS DE EVENTOS*****/
@@ -121,8 +121,10 @@ function App() {
                     type="radio"
                     name="palette"
                     id="1"
-                    defaultChecked
                     value="1"
+                    onChange={handleInput}
+                    checked={data.palette === '1'}
+
                   />
                   <div className="design__palette__green"></div>
                 </label>
@@ -133,6 +135,8 @@ function App() {
                     name="palette"
                     id="2"
                     value="2"
+                    onChange={handleInput}
+                    checked={data.palette === '2'}
                   />
                   <div className="design__palette__red"> </div>
                 </label>
@@ -145,6 +149,8 @@ function App() {
                     name="palette"
                     id="3"
                     value="3"
+                    onChange={handleInput}
+                    checked={data.palette === '3'}
                   />
                   <div className="design__palette__grey"></div>
                 </label>
@@ -176,6 +182,7 @@ function App() {
                   placeholder="Ej: Sally Jill"
                   onChange={handleInput}
                   required
+                  value={data.name}
                 />
               </label>
               <label
@@ -192,6 +199,7 @@ function App() {
                   placeholder="Ej: Front-end unicorn"
                   onChange={handleInput}
                   required
+                  value={data.job}
                 />
               </label>
               <label
@@ -226,6 +234,7 @@ function App() {
                   placeholder="Ej: sally.hill@gmail.com"
                   onChange={handleInput}
                   required
+                  value={data.email}
                 />
               </label>
               <label
@@ -239,6 +248,7 @@ function App() {
                   id="phone"
                   placeholder="Ej: 555-55-55-55"
                   onChange={handleInput}
+                  value={data.phone}
                 />
               </label>
               <label
@@ -255,6 +265,7 @@ function App() {
                   placeholder="Ej: linkedin.com/in/sally-hill"
                   onChange={handleInput}
                   required
+                  value={data.linkedin}
                 />
               </label>
               <label
@@ -271,6 +282,7 @@ function App() {
                   placeholder="Ej: @sally-hill"
                   onChange={handleInput}
                   required
+                  value={data.github}
                 />
               </label>
             </div>
