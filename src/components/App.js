@@ -15,6 +15,9 @@ function App() {
     github: '',
     photo: '',
   });
+
+  const [activeSection , setActiveSection] = useState('design');
+
   // /****END VARIABLES****/
 
   // /*****FUNCIONES MANEJADORAS DE EVENTOS*****/
@@ -36,9 +39,21 @@ function App() {
       github: '',
       photo: '',
     });
-    
-    // handleInput(event);
   };
+
+    const handleClickDesign = (event) => {
+      setActiveSection('design');
+    };
+
+    const handleClickFill = (event) => {
+      setActiveSection('fill');
+    };
+
+    const handleClickShare = (event) => {
+      setActiveSection('share');
+    };
+  
+
   // /*****END FUNCIONES MANEJADORAS DE EVENTOS*****/
 
   // /*****FUNCIONALIDADES*****/
@@ -64,7 +79,7 @@ function App() {
               <i className="fa-regular fa-trash-can preview__button--can"></i>{' '}
               Reset
             </button>
-            <article className="preview__container js-mother-of-palettes">
+            <article className={`preview__container js-mother-of-palettes palette-${data.palette}`}>
               <h2 className="preview__name">
                 {previewText('name', 'Nombre Apellidos')}
               </h2>
@@ -102,7 +117,7 @@ function App() {
         </section>
         <form className="container-form" action="">
           <fieldset className="design">
-            <div className="design__title">
+            <div className="design__title" onClick={handleClickDesign}>
               <legend className="design__legend">
                 <i className="fa-regular fa-object-ungroup design__legend--icon"></i>
                 Diseña
@@ -110,7 +125,7 @@ function App() {
               <i className="fa-solid fa-angle-up legend--arrow--up"></i>
               <i className="fa-solid fa-angle-down collapse legend--arrow--down"></i>
             </div>
-            <section className="design__palette js-design">
+            <section className={`design__palette js-design ${activeSection !== 'design' ? 'collapse': ''}`}>
               <span className="design__palette__span"> Colores</span>
               <div className="design__palette__radio">
                 <label
@@ -159,7 +174,7 @@ function App() {
             <div className="border_button"></div>
           </fieldset>
           <fieldset className="fill">
-            <div className="fill__title">
+            <div className="fill__title" onClick={handleClickFill}>
               <legend className="fill__legend">
                 <i className="fa-regular fa-keyboard fill__legend--icon"></i>{' '}
                 Rellena
@@ -168,7 +183,7 @@ function App() {
               <i className="fa-solid fa-angle-down legend--arrow--down"></i>
             </div>
 
-            <div className="js-fill">
+            <div className={`js-fill ${activeSection !== 'fill' ? 'collapse': ''}`}>
               <label htmlFor="name" className="fill__label fill__label--name">
                 <span className="fill__label__text--name">
                   {' '}
@@ -289,7 +304,7 @@ function App() {
             <div className="border_button"></div>
           </fieldset>
           <fieldset className="form">
-            <div className="form__share">
+            <div className="form__share" onClick={handleClickShare}>
               <legend className="form__legend">
                 <i className="fa-solid fa-share-nodes form__legend--icon"></i>
                 Comparte
@@ -298,7 +313,7 @@ function App() {
               <i className="fa-solid fa-angle-down legend--arrow--down"></i>
             </div>
 
-            <div className="js-form collapse">
+            <div className={`js-share ${activeSection !== 'share' ? 'collapse': ''}`}>
               <label htmlFor="create-card" className="form__label">
                 <div className="form__box js_form_box">
                   <i className="fa-regular fa-address-card form__box--icon"></i>
