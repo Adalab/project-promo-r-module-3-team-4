@@ -17,6 +17,8 @@ function App() {
   });
 
   const [activeSection , setActiveSection] = useState('design');
+  const [errorPhone,  setErrorPhone] = useState(false);
+  const [errorEmail, setErrorEmail] = useState(false);
 
   // /****END VARIABLES****/
 
@@ -24,8 +26,29 @@ function App() {
   const handleInput = (event) => {
     const inputValue = event.target.value;
     const inputName = event.target.name;
+    if (inputName === 'phone'){
+      const regExPhone = /[6-9]{1}[0-9]{8}/; //Se añade una comprobación para que vea si el valor del teléfono cumple con la expresión regular dada
+      if (regExPhone.test(inputValue) || inputValue ===""){
+        setData({ ...data, [inputName]: inputValue });
+        setErrorPhone(false); 
+      } else { //Si el valor no cumple con la expresión regular es visible el siguiente mensaje
+       setErrorPhone(true);
+      }
+      setData({ ...data, [inputName]: inputValue });
+  }
+
+  else if (inputName === 'email'){
+    const regExEmail = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/; //Se añade una comprobación para que vea si el valor del teléfono cumple con la expresión regular dada
+    if (regExEmail.test(inputValue) || inputValue ===""){
+      setData({ ...data, [inputName]: inputValue });
+      setErrorEmail(false); 
+    } else { //Si el valor no cumple con la expresión regular es visible el siguiente mensaje
+     setErrorEmail(true);
+    }
     setData({ ...data, [inputName]: inputValue });
-  };
+  }
+ 
+};
 
   const handleClickReset = (event) => {
     event.preventDefault();
@@ -64,6 +87,18 @@ function App() {
       return defaultText;
     }
   };
+
+  const errorPhoneText = (errorMsg) => {
+    if (errorPhone) {
+      return errorMsg;
+    } 
+  }
+
+  const errorEmailText = (errorMsg) => {
+    if (errorEmail) {
+      return errorMsg;
+    } 
+  }
 
   // /*****END FUNCIONALIDADES*****/
 
@@ -252,6 +287,7 @@ function App() {
                   value={data.email}
                 />
               </label>
+              <p className="error-msg"> {errorEmailText("El email que has introducido no es correcto.")}</p>
               <label
                 htmlFor="phone"
                 className="fill__label fill__input--telefono">
@@ -266,6 +302,7 @@ function App() {
                   value={data.phone}
                 />
               </label>
+              <p className="error-msg"> {errorPhoneText("El teléfono que has introducido no es correcto.")}</p>
               <label
                 htmlFor="linkedin"
                 className="fill__label fill__label--linkedin">
@@ -356,6 +393,6 @@ function App() {
       </footer>
     </div>
   );
-}
+};
 
 export default App;
