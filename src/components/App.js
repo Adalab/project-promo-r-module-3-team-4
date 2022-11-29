@@ -1,8 +1,14 @@
+//styles
 import '../styles/App.scss';
-import logoCards from '../images/logo-awesome.svg';
+//images
 import logoAdalab from '../images/logo-adalab.png';
+import profilePhoto from '../images/cat-programming.jpg';
+//services
 import { useState } from 'react';
 import callToApi from '../services/api';
+//components
+import Header from './Header';
+import CardPreview from './CardPreview';
 
 function App() {
   // /****VARIABLES****/
@@ -14,13 +20,13 @@ function App() {
     email: '',
     linkedin: '',
     github: '',
-    photo: '',
+    photo: profilePhoto,
   });
 
   const [activeSection, setActiveSection] = useState('design');
   const [errorPhone, setErrorPhone] = useState(false);
   const [errorEmail, setErrorEmail] = useState(false);
-  const [cardUrl, setCardUrl] = useState('');
+  const [cardResponseFetch, setCardResponseFetch] = useState({});
 
   // /****END VARIABLES****/
 
@@ -92,19 +98,12 @@ function App() {
 
   const handleClickCreateCard = (event) => {
     event.preventDefault();
-    callToApi(data).then((response) => setCardUrl(response));
+    callToApi(data).then((response) => setCardResponseFetch(response));
   };
 
   // /*****END FUNCIONES MANEJADORAS DE EVENTOS*****/
 
   // /*****FUNCIONALIDADES*****/
-  const previewText = (property, defaultText) => {
-    if (data[property]) {
-      return data[property];
-    } else {
-      return defaultText;
-    }
-  };
 
   const errorPhoneText = (errorMsg) => {
     if (errorPhone) {
@@ -122,9 +121,7 @@ function App() {
 
   return (
     <div>
-      <header className="header">
-        <img className="header__logo" src={logoCards} alt="logo" />
-      </header>
+      <Header />
       <main className="mainCreate">
         <section className="preview ">
           <div className="preview__align">
@@ -132,41 +129,7 @@ function App() {
               <i className="fa-regular fa-trash-can preview__button--can"></i>{' '}
               Reset
             </button>
-            <article
-              className={`preview__container js-mother-of-palettes palette-${data.palette}`}>
-              <h2 className="preview__name">
-                {previewText('name', 'Nombre Apellidos')}
-              </h2>
-              <h3 className="preview__job">
-                {previewText('job', 'Front End Developer')}
-              </h3>
-              <div className="preview__img js__profile-image"></div>
-              <ul className="preview__icons">
-                <li>
-                  <a href={`tel:${data.phone}`} className="telephone">
-                    <i className="fa-solid fa-mobile-screen-button preview__icons--color"></i>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={`mailto:${data.email}`}
-                    target="_blank"
-                    className="emailadress">
-                    <i className="fa-regular fa-envelope preview__icons--color"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href={data.linkedin} target="_blank" className="linkedin">
-                    <i className="fa-brands fa-linkedin-in preview__icons--color"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href={data.github} target="_blank" className="github">
-                    <i className="fa-brands fa-github-alt preview__icons--color"></i>
-                  </a>
-                </li>
-              </ul>
-            </article>
+            <CardPreview data={data} />
           </div>
         </section>
         <form className="container-form" onSubmit={handleSubmit}>
@@ -400,21 +363,40 @@ function App() {
               </label>
               <div className="CardContainer js_card_container">
                 <h3 className="CardContainer__card js_card_title"></h3>
-                <h4 className="CardContainer__url js_url">{cardUrl}</h4>
-                <div className="container__twitter js_container__twitter collapse">
-                  <label htmlFor="compartir-twitter">
-                    <a href="" target="_blank" className="js_twitter">
-                      <i className="fa-brands fa-twitter container__twitter__icon"></i>
-                      <input
-                        type="submit"
-                        name="compartir-twitter"
-                        id="compartir-twitter"
-                        value="Compartir en twitter"
-                        className="container__twitter__btn "
-                      />
+                {/* TODO: Preguntar a Ivan otra vez EMOSIDO ENGAÑADA */}
+                {!cardResponseFetch.success ? (
+                  <p>
+                    Error al enviar los datos. Por favor revisa el formulario.
+                  </p>
+                ) : (
+                  <>
+                    <a
+                      className="CardContainer__url"
+                      href={cardResponseFetch.cardURL}
+                      target="_blank"
+                      rel="noreferrer">
+                      {cardResponseFetch.cardURL}
                     </a>
-                  </label>
-                </div>
+                    <div className="container__twitter js_container__twitter">
+                      <label htmlFor="compartir-twitter">
+                        <a
+                          href=""
+                          target="_blank"
+                          className="js_twitter"
+                          rel="noreferrer">
+                          <i className="fa-brands fa-twitter container__twitter__icon"></i>
+                          <input
+                            type="submit"
+                            name="compartir-twitter"
+                            id="compartir-twitter"
+                            value="Compartir en twitter"
+                            className="container__twitter__btn "
+                          />
+                        </a>
+                      </label>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
 
