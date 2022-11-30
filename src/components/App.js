@@ -365,9 +365,7 @@ function App() {
                 <h3 className="CardContainer__card js_card_title"></h3>
                 {/* TODO: Preguntar a Ivan otra vez EMOSIDO ENGAÑADA */}
                 {!cardResponseFetch.success ? (
-                  <p>
-                    Error al enviar los datos. Por favor revisa el formulario.
-                  </p>
+                  <p>{cardResponseFetch.error}</p>
                 ) : (
                   <>
                     <a

@@ -1,5 +1,5 @@
 const callToApi = (data) => {
-  return fetch('https://dev.adalab.es/api/card', {
+  return fetch('https://awesome-profile-cards.herokuapp.com/card', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
@@ -9,7 +9,16 @@ const callToApi = (data) => {
     .then((response) => response.json())
 
     .then((response) => {
-      return response;
+      if (response.success) {
+        return response;
+      } else {
+        console.log(response.error);
+        const errorResponse = {
+          success: response.success,
+          error: 'Error al enviar los datos. Por favor revisa el formulario.',
+        };
+        return errorResponse;
+      }
     });
 };
 
