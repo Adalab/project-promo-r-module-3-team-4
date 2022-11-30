@@ -1,3 +1,5 @@
+import '../styles/layout/Fill.scss';
+
 const Fill = (props) => {
   const handleChange = (ev) => {
     props.handleInput({ name: ev.target.name, value: ev.target.value });

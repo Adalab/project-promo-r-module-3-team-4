@@ -1,3 +1,9 @@
+@import '../core/responsive';
+@import '../core/mixins';
+@import '../core/function';
+@import '../core/variables';
+@import '../components/jsarrow';
+
 .fill {
   margin-bottom: rem(30);
   margin-top: rem(30);
@@ -11,17 +17,21 @@
     flex-direction: row;
     justify-content: space-between;
   }
+
   &__legend {
     @include form-title;
+
     &--icon {
       @include icons;
     }
-   
+
   }
+
   &__label {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+
     &--profileimage {
       margin-top: rem(10);
     }
@@ -32,6 +42,7 @@
         margin-bottom: rem(7);
         margin-top: rem(25);
       }
+
       &--jobposition,
       &--email,
       &--telefono,
@@ -43,16 +54,19 @@
         margin-top: rem(7);
       }
     }
+
     &__container {
       display: flex;
+
       &--box {
         width: rem(30);
         height: rem(30);
         margin: rem(7) rem(74) rem(20) rem(20);
         border: solid 1px $color-input;
         background-position: center;
-        background-size: cover;        
+        background-size: cover;
       }
+
       &--button {
         font-family: $font-Open;
         background-color: $color-orange;
@@ -69,6 +83,7 @@
       }
     }
   }
+
   &__input {
     @include form-placeholder;
     padding: rem(5);

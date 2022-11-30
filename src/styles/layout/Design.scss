@@ -1,7 +1,14 @@
+@import '../core/responsive';
+@import '../core/mixins';
+@import '../core/function';
+@import '../core/variables';
+@import '../components/jsarrow';
+
 .container-form {
   @include tablet {
     flex-grow: 2;
   }
+
   @include desktop {
     flex-grow: 1;
   }
@@ -19,17 +26,21 @@
     flex-direction: row;
     justify-content: space-between;
   }
+
   &__legend {
     @include form-title;
+
     &--icon {
       @include icons;
     }
   }
+
   &__palette {
     padding-top: rem(20);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
     &__span {
       font-family: $font-Open;
       font-size: rem(14);
@@ -38,6 +49,7 @@
       margin-left: rem(15);
       margin-top: rem(10);
     }
+
     &__radio {
       display: flex;
       flex-direction: column;
@@ -51,43 +63,52 @@
         gap: rem(5);
       }
     }
+
     &__green {
       padding-right: 25vw;
       padding-bottom: 8vw;
       background-image: url(../../images/palettes/palette-one.png);
       background-size: contain;
+
       @include tablet {
         padding-right: 15vw;
         padding-bottom: 5vw;
       }
+
       @include desktop {
         padding-right: 10vw;
         padding-bottom: 3vw;
       }
     }
+
     &__red {
       padding-right: 25vw;
       padding-bottom: 8vw;
       background-image: url(../../images/palettes/palette-two.png);
       background-size: contain;
+
       @include tablet {
         padding-right: 15vw;
         padding-bottom: 5vw;
       }
+
       @include desktop {
         padding-right: 10vw;
         padding-bottom: 3vw;
       }
     }
+
     &__grey {
       padding-right: 25vw;
       padding-bottom: 8vw;
       background-image: url(../../images/palettes/palette-three.png);
       background-size: contain;
+
       @include tablet {
         padding-right: 15vw;
         padding-bottom: 5vw;
       }
+
       @include desktop {
         padding-right: 10vw;
         padding-bottom: 3vw;
