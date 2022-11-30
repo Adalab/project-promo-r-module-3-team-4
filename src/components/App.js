@@ -9,6 +9,7 @@ import callToApi from '../services/api';
 //components
 import Header from './Header';
 import CardPreview from './CardPreview';
+import Design from './Design';
 
 function App() {
   // /****VARIABLES****/
@@ -36,9 +37,9 @@ function App() {
     ev.preventDefault();
   };
 
-  const handleInput = (event) => {
-    let inputValue = event.target.value;
-    const inputName = event.target.name;
+  const handleInput = (objInput) => {
+    let inputValue = objInput.value;
+    const inputName = objInput.name;
     if (inputName === 'phone') {
       const regExPhone = /[6-9]{1}[0-9]{8}/; //Se añade una comprobación para que vea si el valor del teléfono cumple con la expresión regular dada
       if (regExPhone.test(inputValue) || inputValue === '') {
@@ -84,15 +85,15 @@ function App() {
     });
   };
 
-  const handleClickDesign = (event) => {
+  const handleClickDesign = () => {
     setActiveSection('design');
   };
 
-  const handleClickFill = (event) => {
+  const handleClickFill = () => {
     setActiveSection('fill');
   };
 
-  const handleClickShare = (event) => {
+  const handleClickShare = () => {
     setActiveSection('share');
   };
 
@@ -133,65 +134,7 @@ function App() {
           </div>
         </section>
         <form className="container-form" onSubmit={handleSubmit}>
-          <fieldset className="design">
-            <div className="design__title" onClick={handleClickDesign}>
-              <legend className="design__legend">
-                <i className="fa-regular fa-object-ungroup design__legend--icon"></i>
-                Diseña
-              </legend>
-              <i className="fa-solid fa-angle-up legend--arrow--up"></i>
-              <i className="fa-solid fa-angle-down collapse legend--arrow--down"></i>
-            </div>
-            <section
-              className={`design__palette js-design ${
-                activeSection !== 'design' ? 'collapse' : ''
-              }`}>
-              <span className="design__palette__span"> Colores</span>
-              <div className="design__palette__radio">
-                <label
-                  htmlFor="green"
-                  className="design__palette__radio--colors">
-                  <input
-                    className="js-btn-green"
-                    type="radio"
-                    name="palette"
-                    id="1"
-                    value="1"
-                    onChange={handleInput}
-                    checked={data.palette === '1'}
-                  />
-                  <div className="design__palette__green"></div>
-                </label>
-                <label htmlFor="red" className="design__palette__radio--colors">
-                  <input
-                    className="js-btn-red"
-                    type="radio"
-                    name="palette"
-                    id="2"
-                    value="2"
-                    onChange={handleInput}
-                    checked={data.palette === '2'}
-                  />
-                  <div className="design__palette__red"> </div>
-                </label>
-                <label
-                  htmlFor="grey"
-                  className="design__palette__radio--colors">
-                  <input
-                    className="js-btn-grey"
-                    type="radio"
-                    name="palette"
-                    id="3"
-                    value="3"
-                    onChange={handleInput}
-                    checked={data.palette === '3'}
-                  />
-                  <div className="design__palette__grey"></div>
-                </label>
-              </div>
-            </section>
-            <div className="border_button"></div>
-          </fieldset>
+        <Design handleInput={handleInput} handleClickDisign={handleClickDesign}palette={data.palette}  activeSection={activeSection}></Design>
           <fieldset className="fill">
             <div className="fill__title" onClick={handleClickFill}>
               <legend className="fill__legend">
@@ -363,7 +306,6 @@ function App() {
               </label>
               <div className="CardContainer js_card_container">
                 <h3 className="CardContainer__card js_card_title"></h3>
-                {/* TODO: Preguntar a Ivan otra vez EMOSIDO ENGAÑADA */}
                 {!cardResponseFetch.success ? (
                   <p>{cardResponseFetch.error}</p>
                 ) : (
