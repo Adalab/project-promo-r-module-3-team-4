@@ -99,8 +99,8 @@ function App() {
     setActiveSection('share');
   };
 
-  const handleClickCreateCard = (event) => {
-    event.preventDefault();
+  const handleClickCreateCard = () => {
+    console.log('Estoy en el click');
     callToApi(data).then((response) => setCardResponseFetch(response));
   };
 
@@ -143,6 +143,7 @@ function App() {
           handleClickShare={handleClickShare}
           activeSection={activeSection}
           cardResponseFetch={cardResponseFetch}
+        
 
           />
         </form>

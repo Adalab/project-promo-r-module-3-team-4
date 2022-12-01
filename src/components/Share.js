@@ -1,10 +1,18 @@
 
 
 const Share = (props) => {
-
+  const handleClickCollapse = (ev) => {
+    props.handleClickShare();
+  };
+  const handleClickButtonCreate = (event) => {
+    
+    event.preventDefault();
+    console.log('Estoy en Share');
+    props.handleClickCreateCard();
+  };
     return(
         <fieldset className="form">
-        <div className="form__share" onClick={handleClickShare}>
+        <div className="form__share" onClick={handleClickCollapse}>
           <legend className="form__legend">
             <i className="fa-solid fa-share-nodes form__legend--icon"></i>
             Comparte
@@ -15,14 +23,14 @@ const Share = (props) => {
 
         <div
           className={`js-share ${
-            activeSection !== 'share' ? 'collapse' : ''
+            props.activeSection !== 'share' ? 'collapse' : ''
           }`}>
           <label htmlFor="create-card" className="form__label">
             <div className="form__box js_form_box">
               <i className="fa-regular fa-address-card form__box--icon"></i>
               <button
                 className="form__box--button js_button_submit"
-                onClick={handleClickCreateCard}>
+                onClick={handleClickButtonCreate}>
                 Crear tarjeta
               </button>
               {/* <input type="submit" name="create-card"
@@ -31,16 +39,16 @@ const Share = (props) => {
           </label>
           <div className="CardContainer js_card_container">
             <h3 className="CardContainer__card js_card_title"></h3>
-            {!cardResponseFetch.success ? (
-              <p>{cardResponseFetch.error}</p>
+            {!props.cardResponseFetch.success ? (
+              <p>{props.cardResponseFetch.error}</p>
             ) : (
               <>
                 <a
                   className="CardContainer__url"
-                  href={cardResponseFetch.cardURL}
+                  href={props.cardResponseFetch.cardURL}
                   target="_blank"
                   rel="noreferrer">
-                  {cardResponseFetch.cardURL}
+                  {props.cardResponseFetch.cardURL}
                 </a>
                 <div className="container__twitter js_container__twitter">
                   <label htmlFor="compartir-twitter">
