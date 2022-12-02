@@ -4,13 +4,13 @@ const Design = (props) => {
   const handleChange = (ev) => {
     props.handleInput({ name: ev.target.name, value: ev.target.value });
   };
-  const handleClick = (ev) => {
+  const handleClickDesign = (ev) => {
     props.handleClickDesign();
   };
 
   return (
     <fieldset className="design">
-      <div className="design__title" onClick={handleClick}>
+      <div className="design__title" onClick={handleClickDesign}>
         <legend className="design__legend">
           <i className="fa-regular fa-object-ungroup design__legend--icon"></i>
           Diseña

@@ -4,7 +4,7 @@ const Fill = (props) => {
   const handleChange = (ev) => {
     props.handleInput({ name: ev.target.name, value: ev.target.value });
   };
-  const handleClick = (ev) => {
+  const handleClickFill = (ev) => {
     props.handleClickFill();
   };
   const errorPhoneText = (errorMsg) => {
@@ -21,7 +21,7 @@ const Fill = (props) => {
 
   return (
     <fieldset className="fill">
-      <div className="fill__title" onClick={handleClick}>
+      <div className="fill__title" onClick={handleClickFill}>
         <legend className="fill__legend">
           <i className="fa-regular fa-keyboard fill__legend--icon"></i> Rellena
         </legend>

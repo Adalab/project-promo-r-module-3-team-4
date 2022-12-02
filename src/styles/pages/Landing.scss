@@ -1,5 +1,8 @@
 //Landing
-
+@import '../core/responsive';
+@import '../core/mixins';
+@import '../core/function';
+@import '../core/variables';
 .main {
   height: 84vh;
   display: flex;

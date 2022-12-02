@@ -1,3 +1,7 @@
+@import '../core/responsive';
+@import '../core/mixins';
+@import '../core/function';
+@import '../core/variables';
 .footer {
   display: flex;
   flex-direction: column;

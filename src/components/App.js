@@ -1,17 +1,16 @@
 //styles
 import '../styles/App.scss';
 //images
-import logoAdalab from '../images/logo-adalab.png';
 import profilePhoto from '../images/cat-programming.jpg';
 //services
 import { useState } from 'react';
 import callToApi from '../services/api';
 //components
-import Header from './Header';
-import CardPreview from './CardPreview';
-import Design from './Design';
-import Fill from './Fill';
-import Share from './Share';
+import Landing from './Landing';
+import Card from './Card';
+import Footer from './Footer';
+import {Route, Routes} from 'react-router-dom';
+
 
 function App() {
   // /****VARIABLES****/
@@ -30,8 +29,6 @@ function App() {
   const [errorPhone, setErrorPhone] = useState(false);
   const [errorEmail, setErrorEmail] = useState(false);
   const [cardResponseFetch, setCardResponseFetch] = useState({});
-
-  // /****END VARIABLES****/
 
   // /*****FUNCIONES MANEJADORAS DE EVENTOS*****/
   const handleSubmit = (ev) => {
@@ -73,8 +70,7 @@ function App() {
     setData({ ...data, [inputName]: inputValue });
   };
 
-  const handleClickReset = (event) => {
-    event.preventDefault();
+  const handleClickReset = () => {
     setData({
       palette: '1',
       name: '',
@@ -100,60 +96,35 @@ function App() {
   };
 
   const handleClickCreateCard = () => {
-    console.log('Estoy en el click');
     callToApi(data).then((response) => setCardResponseFetch(response));
   };
 
-  // /*****END FUNCIONES MANEJADORAS DE EVENTOS*****/
-
-  // /*****FUNCIONALIDADES*****/
-
-  // /*****END FUNCIONALIDADES*****/
 
   return (
     <div>
-      <Header />
-      <main className="mainCreate">
-        <section className="preview ">
-          <div className="preview__align">
-            <button className="preview__button" onClick={handleClickReset}>
-              <i className="fa-regular fa-trash-can preview__button--can"></i>{' '}
-              Reset
-            </button>
-            <CardPreview data={data} />
-          </div>
-        </section>
-        <form className="container-form" onSubmit={handleSubmit}>
-          <Design
+
+      <Routes>
+            <Route path='/' element={<Landing></Landing>}></Route>
+
+            
+            <Route path='/card' element={<Card
             handleInput={handleInput}
             handleClickDesign={handleClickDesign}
             palette={data.palette}
-            activeSection={activeSection}> 
-            </Design>
-          <Fill
-            handleInput={handleInput}
+            activeSection={activeSection} 
             handleClickFill={handleClickFill}
             data={data}
-            activeSection={activeSection}
             errorPhone={errorPhone}
             errorEmail={errorEmail}
-          />
-          <Share
-          handleClickCreateCard={handleClickCreateCard}
-          handleClickShare={handleClickShare}
-          activeSection={activeSection}
-          cardResponseFetch={cardResponseFetch}
-        
+            handleClickCreateCard={handleClickCreateCard}
+            handleClickShare={handleClickShare}
+            cardResponseFetch={cardResponseFetch}
+            handleClickReset={handleClickReset}></Card>}>
 
-          />
-        </form>
-      </main>
-      <footer className="footer">
-        <p className="footer__text">Awesome profile-cards @2022</p>
-        <div className="footer__box">
-          <img src={logoAdalab} alt="Adalab" className="footer__box--logo" />
-        </div>
-      </footer>
+          </Route>
+          </Routes>
+
+      <Footer></Footer>
     </div>
   );
 }

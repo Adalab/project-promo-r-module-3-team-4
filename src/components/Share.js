@@ -1,18 +1,17 @@
 
-
+import './../styles/layout/Share.scss'
 const Share = (props) => {
-  const handleClickCollapse = (ev) => {
+  const handleClickShare = (ev) => {
     props.handleClickShare();
   };
   const handleClickButtonCreate = (event) => {
     
     event.preventDefault();
-    console.log('Estoy en Share');
     props.handleClickCreateCard();
   };
     return(
         <fieldset className="form">
-        <div className="form__share" onClick={handleClickCollapse}>
+        <div className="form__share" onClick={handleClickShare}>
           <legend className="form__legend">
             <i className="fa-solid fa-share-nodes form__legend--icon"></i>
             Comparte
