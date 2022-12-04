@@ -9,8 +9,7 @@ import callToApi from '../services/api';
 import Landing from './Landing';
 import Card from './Card';
 import Footer from './Footer';
-import {Route, Routes} from 'react-router-dom';
-
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   // /****VARIABLES****/
@@ -99,30 +98,30 @@ function App() {
     callToApi(data).then((response) => setCardResponseFetch(response));
   };
 
-
   return (
     <div>
-
       <Routes>
-            <Route path='/' element={<Landing></Landing>}></Route>
+        <Route path="/" element={<Landing></Landing>}></Route>
 
-            
-            <Route path='/card' element={<Card
-            handleInput={handleInput}
-            handleClickDesign={handleClickDesign}
-            palette={data.palette}
-            activeSection={activeSection} 
-            handleClickFill={handleClickFill}
-            data={data}
-            errorPhone={errorPhone}
-            errorEmail={errorEmail}
-            handleClickCreateCard={handleClickCreateCard}
-            handleClickShare={handleClickShare}
-            cardResponseFetch={cardResponseFetch}
-            handleClickReset={handleClickReset}></Card>}>
-
-          </Route>
-          </Routes>
+        <Route
+          path="/card"
+          element={
+            <Card
+              handleSubmit={handleSubmit}
+              handleInput={handleInput}
+              handleClickDesign={handleClickDesign}
+              palette={data.palette}
+              activeSection={activeSection}
+              handleClickFill={handleClickFill}
+              data={data}
+              errorPhone={errorPhone}
+              errorEmail={errorEmail}
+              handleClickCreateCard={handleClickCreateCard}
+              handleClickShare={handleClickShare}
+              cardResponseFetch={cardResponseFetch}
+              handleClickReset={handleClickReset}></Card>
+          }></Route>
+      </Routes>
 
       <Footer></Footer>
     </div>
