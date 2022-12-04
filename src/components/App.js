@@ -1,7 +1,7 @@
 //styles
 import '../styles/App.scss';
 //images
-import profilePhoto from '../images/cat-programming.jpg';
+//import profilePhoto from '../images/cat-programming.jpg';
 //services
 import { useState } from 'react';
 import callToApi from '../services/api';
@@ -21,7 +21,7 @@ function App() {
     email: '',
     linkedin: '',
     github: '',
-    photo: profilePhoto,
+    photo: '',
   });
 
   const [activeSection, setActiveSection] = useState('design');
@@ -69,6 +69,11 @@ function App() {
     setData({ ...data, [inputName]: inputValue });
   };
 
+  const handleImage = (imageData) => {
+    console.log(imageData);
+    setData({ ...data, photo: imageData });
+  };
+
   const handleClickReset = () => {
     setData({
       palette: '1',
@@ -109,6 +114,7 @@ function App() {
             <Card
               handleSubmit={handleSubmit}
               handleInput={handleInput}
+              handleImage={handleImage}
               handleClickDesign={handleClickDesign}
               palette={data.palette}
               activeSection={activeSection}
