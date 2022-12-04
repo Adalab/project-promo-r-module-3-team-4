@@ -14,7 +14,6 @@ const Share = (props) => {
           <i className="fa-solid fa-share-nodes form__legend--icon"></i>
           Comparte
         </legend>
-        {/* <i className="fa-solid fa-angle-up collapse legend--arrow--up comparte"></i> */}
         <i
           className={`fa-solid fa-angle-down arrow ${
             props.activeSection === 'share' ? 'arrow-up' : ''
