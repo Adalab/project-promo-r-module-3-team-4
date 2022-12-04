@@ -15,8 +15,11 @@ const Design = (props) => {
           <i className="fa-regular fa-object-ungroup design__legend--icon"></i>
           Diseña
         </legend>
-        <i className="fa-solid fa-angle-up legend--arrow--up"></i>
-        <i className="fa-solid fa-angle-down collapse legend--arrow--down"></i>
+        {/* <i className="fa-solid fa-angle-up legend--arrow--up"></i> */}
+        <i
+          className={`fa-solid fa-angle-down arrow ${
+            props.activeSection === 'design' ? 'arrow-up' : ''
+          }`}></i>
       </div>
       <section
         className={`design__palette js-design ${
