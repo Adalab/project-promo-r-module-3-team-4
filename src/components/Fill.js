@@ -25,8 +25,10 @@ const Fill = (props) => {
         <legend className="fill__legend">
           <i className="fa-regular fa-keyboard fill__legend--icon"></i> Rellena
         </legend>
-        <i className="fa-solid fa-angle-up collapse legend--arrow--up"></i>
-        <i className="fa-solid fa-angle-down legend--arrow--down"></i>
+        <i
+          className={`fa-solid fa-angle-down arrow ${
+            props.activeSection === 'fill' ? 'arrow-up' : ''
+          }`}></i>
       </div>
 
       <div
