@@ -4,16 +4,20 @@ import Design from './Design';
 import Fill from './Fill';
 import Share from './Share';
 import Reset from './Reset';
-import './../styles/layout/Card.scss'
+import './../styles/layout/Card.scss';
 const Card = (props) => {
-    return (
-        <>
-        <Header />
+  return (
+    <>
+      <Header />
       <main className="mainCreate">
         <section className="preview ">
           <div className="preview__align">
             <Reset handleClickReset={props.handleClickReset}></Reset>
-            <CardPreview data={props.data} />
+            <CardPreview
+              data={props.data}
+              getLinkedinUser={props.getLinkedinUser}
+              getGithubUser={props.getGithubUser}
+            />
           </div>
         </section>
         <form className="container-form" onSubmit={props.handleSubmit}>
@@ -21,8 +25,7 @@ const Card = (props) => {
             handleInput={props.handleInput}
             handleClickDesign={props.handleClickDesign}
             palette={props.data.palette}
-            activeSection={props.activeSection}> 
-            </Design>
+            activeSection={props.activeSection}></Design>
           <Fill
             handleInput={props.handleInput}
             handleClickFill={props.handleClickFill}
@@ -32,16 +35,14 @@ const Card = (props) => {
             errorEmail={props.errorEmail}
           />
           <Share
-          handleClickCreateCard={props.handleClickCreateCard}
-          handleClickShare={props.handleClickShare}
-          activeSection={props.activeSection}
-          cardResponseFetch={props.cardResponseFetch}
-        
-
+            handleClickCreateCard={props.handleClickCreateCard}
+            handleClickShare={props.handleClickShare}
+            activeSection={props.activeSection}
+            cardResponseFetch={props.cardResponseFetch}
           />
         </form>
       </main>
-      </>
-    )
+    </>
+  );
 };
-    export default Card
+export default Card;
