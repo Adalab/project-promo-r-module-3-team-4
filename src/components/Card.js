@@ -13,7 +13,11 @@ const Card = (props) => {
         <section className="preview ">
           <div className="preview__align">
             <Reset handleClickReset={props.handleClickReset}></Reset>
-            <CardPreview data={props.data} />
+            <CardPreview
+              data={props.data}
+              getLinkedinUser={props.getLinkedinUser}
+              getGithubUser={props.getGithubUser}
+            />
           </div>
         </section>
         <form className="container-form" onSubmit={props.handleSubmit}>
