@@ -9,7 +9,8 @@ import callToApi from '../services/api';
 import Landing from './Landing';
 import Card from './Card';
 import Footer from './Footer';
-import { Route, Routes } from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
+
 
 function App() {
   // /****VARIABLES****/
@@ -55,6 +56,17 @@ function App() {
         setErrorEmail(true);
       }
     }
+    // else if (inputName === 'linkedin') {
+    //   const linkedinArray = inputValue.split('/');
+    //   const length = linkedinArray.length;
+    //   if (inputValue.endsWith('/')) {
+    //     inputValue = linkedinArray[length - 2];
+    //   } else {
+    //     inputValue = linkedinArray[length - 1];
+    //   }
+    // } else if (inputName === 'github') {
+    //   inputValue = inputValue.replace('@', '');
+    // }
     setData({ ...data, [inputName]: inputValue });
   };
 
@@ -83,68 +95,34 @@ function App() {
     setActiveSection('share');
   };
 
-  const getLinkedinUser = () => {
-    const linkedinArray = data.linkedin.split('/');
-    let linkedinUser = data.linkedin;
-    const length = linkedinArray.length;
-    if (data.linkedin.endsWith('/')) {
-      linkedinUser = linkedinArray[length - 2];
-    } else {
-      linkedinUser = linkedinArray[length - 1];
-    }
-    return linkedinUser;
-  };
-
-  const getGithubUser = () => {
-    let githubUser = data.github;
-    if (data.github.startsWith('@')) {
-      githubUser = data.github.replace('@', '');
-    } else if (data.github.includes('/')) {
-      const githubArray = data.github.split('/');
-      const length = githubArray.length;
-      if (data.github.endsWith('/')) {
-        githubUser = githubArray[length - 2];
-      } else {
-        githubUser = githubArray[length - 1];
-      }
-    }
-    return githubUser;
-  };
-
   const handleClickCreateCard = () => {
-    const linkedinUser = getLinkedinUser();
-    const githubUser = getGithubUser();
-
-    const cleanData = { ...data, linkedin: linkedinUser, github: githubUser };
-
-    callToApi(cleanData).then((response) => setCardResponseFetch(response));
+    callToApi(data).then((response) => setCardResponseFetch(response));
   };
+
 
   return (
     <div>
-      <Routes>
-        <Route path="/" element={<Landing></Landing>}></Route>
 
-        <Route
-          path="/card"
-          element={
-            <Card
-              handleInput={handleInput}
-              handleClickDesign={handleClickDesign}
-              palette={data.palette}
-              activeSection={activeSection}
-              handleClickFill={handleClickFill}
-              data={data}
-              errorPhone={errorPhone}
-              errorEmail={errorEmail}
-              handleClickCreateCard={handleClickCreateCard}
-              handleClickShare={handleClickShare}
-              cardResponseFetch={cardResponseFetch}
-              handleClickReset={handleClickReset}
-              getLinkedinUser={getLinkedinUser}
-              getGithubUser={getGithubUser}></Card>
-          }></Route>
-      </Routes>
+      <Routes>
+            <Route path='/' element={<Landing></Landing>}></Route>
+
+            
+            <Route path='/card' element={<Card
+            handleInput={handleInput}
+            handleClickDesign={handleClickDesign}
+            palette={data.palette}
+            activeSection={activeSection} 
+            handleClickFill={handleClickFill}
+            data={data}
+            errorPhone={errorPhone}
+            errorEmail={errorEmail}
+            handleClickCreateCard={handleClickCreateCard}
+            handleClickShare={handleClickShare}
+            cardResponseFetch={cardResponseFetch}
+            handleClickReset={handleClickReset}></Card>}>
+
+          </Route>
+          </Routes>
 
       <Footer></Footer>
     </div>
