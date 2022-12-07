@@ -1,7 +1,7 @@
 //styles
 import '../styles/App.scss';
 //images
-import profilePhoto from '../images/cat-programming.jpg';
+//import profilePhoto from '../images/cat-programming.jpg';
 //services
 import { useState } from 'react';
 import callToApi from '../services/api';
@@ -21,7 +21,7 @@ function App() {
     email: '',
     linkedin: '',
     github: '',
-    photo: profilePhoto,
+    photo: '',
   });
 
   const [activeSection, setActiveSection] = useState('design');
@@ -58,6 +58,11 @@ function App() {
     setData({ ...data, [inputName]: inputValue });
   };
 
+  const handleImage = (imageData) => {
+    console.log(imageData);
+    setData({ ...data, photo: imageData });
+  };
+
   const handleClickReset = () => {
     setData({
       palette: '1',
@@ -69,6 +74,7 @@ function App() {
       github: '',
       photo: '',
     });
+    setCardResponseFetch({});
   };
 
   const handleClickDesign = () => {
@@ -129,7 +135,9 @@ function App() {
           path="/card"
           element={
             <Card
+              handleSubmit={handleSubmit}
               handleInput={handleInput}
+              handleImage={handleImage}
               handleClickDesign={handleClickDesign}
               palette={data.palette}
               activeSection={activeSection}
@@ -142,8 +150,7 @@ function App() {
               cardResponseFetch={cardResponseFetch}
               handleClickReset={handleClickReset}
               getLinkedinUser={getLinkedinUser}
-              getGithubUser={getGithubUser}></Card>
-          }></Route>
+              getGithubUser={getGithubUser}></Card>}></Route>
       </Routes>
 
       <Footer></Footer>

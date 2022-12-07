@@ -33,6 +33,7 @@ const Card = (props) => {
             activeSection={props.activeSection}
             errorPhone={props.errorPhone}
             errorEmail={props.errorEmail}
+            handleImage={props.handleImage}
           />
           <Share
             handleClickCreateCard={props.handleClickCreateCard}
