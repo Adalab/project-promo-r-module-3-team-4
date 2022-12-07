@@ -85,6 +85,7 @@ function App() {
       github: '',
       photo: '',
     });
+    setCardResponseFetch({});
   };
 
   const handleClickDesign = () => {

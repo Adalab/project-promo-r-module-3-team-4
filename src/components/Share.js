@@ -21,27 +21,29 @@ const Share = (props) => {
       </div>
 
       <div
-        className={`js-share ${
+        className={`js-share form__create ${
           props.activeSection !== 'share' ? 'collapse' : ''
         }`}>
-        <label htmlFor="create-card" className="form__label">
-          <div className="form__box js_form_box">
-            <i className="fa-regular fa-address-card form__box--icon"></i>
-            <button
-              className="form__box--button js_button_submit"
-              onClick={handleClickButtonCreate}>
-              Crear tarjeta
-            </button>
-            {/* <input type="submit" name="create-card"
-                            id="create-card" value="Crear tarjeta" className="form__box--button js_button_submit" /> */}
-          </div>
-        </label>
-        <div className="CardContainer js_card_container">
-          <h3 className="CardContainer__card js_card_title"></h3>
+        <button
+          className={`form__create--button js_button_submit ${
+            props.cardResponseFetch.success ? 'successBtn' : ''
+          }`}
+          onClick={handleClickButtonCreate}
+          disabled={props.cardResponseFetch.success}>
+          <i className="fa-regular fa-address-card form__create--icon"></i>
+          Crear tarjeta
+        </button>
+        <div
+          className={`CardContainer js_card_container ${
+            props.cardResponseFetch ? '' : 'collapse'
+          }`}>
           {!props.cardResponseFetch.success ? (
             <p>{props.cardResponseFetch.error}</p>
           ) : (
-            <>
+            <div className="container__twitter">
+              <h3 className="CardContainer__card js_card_title">
+                La tarjeta ha sido creada:
+              </h3>
               <a
                 className="CardContainer__url"
                 href={props.cardResponseFetch.cardURL}
@@ -49,25 +51,16 @@ const Share = (props) => {
                 rel="noreferrer">
                 {props.cardResponseFetch.cardURL}
               </a>
-              <div className="container__twitter js_container__twitter">
-                <label htmlFor="compartir-twitter">
-                  <a
-                    href=""
-                    target="_blank"
-                    className="js_twitter"
-                    rel="noreferrer">
-                    <i className="fa-brands fa-twitter container__twitter__icon"></i>
-                    <input
-                      type="submit"
-                      name="compartir-twitter"
-                      id="compartir-twitter"
-                      value="Compartir en twitter"
-                      className="container__twitter__btn "
-                    />
-                  </a>
-                </label>
-              </div>
-            </>
+              <a
+                className="container__twitter__btn"
+                href={`https://twitter.com/intent/tweet?text=¡Tengo%20una%20nueva%20tarjeta%20de%20visita!%20&hashtags=LasDuquesas,Adalab,PromoRadia&url=${props.cardResponseFetch.cardURL}`}
+                data-size="large"
+                target="_blank"
+                rel="noreferrer">
+                <i class="fa-brands fa-twitter container__twitter__icon"></i>
+                Compartir en twitter
+              </a>
+            </div>
           )}
         </div>
       </div>
