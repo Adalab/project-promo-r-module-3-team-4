@@ -9,7 +9,7 @@ const Landing = () => {
         Crea tu tarjeta de visita
     </h1>
     <p className="main__text">
-        Crea mejores contactos profesionales de &NewLine;forma fácil y cómoda
+        Crea mejores contactos profesionales de forma fácil y cómoda
     </p>
 
     <ul className="main__list">

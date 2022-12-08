@@ -7,12 +7,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: rem(13);
-  padding-bottom: rem(13);
+  padding-top: rem(18);
+  padding-bottom: rem(20);
   // border-top: rem(1) solid $color-lineFormulary;
 
   @include tablet {
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     padding-left: rem(41);
     padding-right: rem(40);
@@ -22,11 +23,12 @@
     font-family: $font-Open;
     color: $color_footer;
     opacity: 0.5;
-    margin-top: rem(13);
-    margin-bottom: rem(18);
+    margin-bottom: rem(12);
+    @include tablet{
+      margin-bottom: 0;
+    }
   }
   &__box {
-    padding: rem(5);
     &--logo {
       width: rem(103);
       height: rem(40);
