@@ -37,6 +37,7 @@ const Card = (props) => {
           handleClickShare={props.handleClickShare}
           activeSection={props.activeSection}
           cardResponseFetch={props.cardResponseFetch}
+          isLoading={props.isLoading}
         
 
           />

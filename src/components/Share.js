@@ -38,7 +38,10 @@ const Share = (props) => {
           disabled={props.cardResponseFetch.success}>
           <i className="fa-regular fa-address-card form__create--icon"></i>
           Crear tarjeta
-        </button>
+        </button> 
+    
+        {props.isLoading ?  <Loading/> : ''}
+        
         <div
           className={`CardContainer js_card_container ${
             props.cardResponseFetch ? '' : 'collapse'
@@ -63,7 +66,7 @@ const Share = (props) => {
                 data-size="large"
                 target="_blank"
                 rel="noreferrer">
-                <i class="fa-brands fa-twitter container__twitter__icon"></i>
+                <i className="fa-brands fa-twitter container__twitter__icon"></i>
                 Compartir en twitter
               </a>
             </div>

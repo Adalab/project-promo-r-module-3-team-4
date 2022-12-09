@@ -92,10 +92,45 @@ function App() {
     setActiveSection('share');
   };
 
-  const handleClickCreateCard = () => {
-    callToApi(data).then((response) => setCardResponseFetch(response));
+  const getLinkedinUser = () => {
+    const linkedinArray = data.linkedin.split('/');
+    let linkedinUser = data.linkedin;
+    const length = linkedinArray.length;
+    if (data.linkedin.endsWith('/')) {
+      linkedinUser = linkedinArray[length - 2];
+    } else {
+      linkedinUser = linkedinArray[length - 1];
+    }
+    return linkedinUser;
   };
 
+  const getGithubUser = () => {
+    let githubUser = data.github;
+    if (data.github.startsWith('@')) {
+      githubUser = data.github.replace('@', '');
+    } else if (data.github.includes('/')) {
+      const githubArray = data.github.split('/');
+      const length = githubArray.length;
+      if (data.github.endsWith('/')) {
+        githubUser = githubArray[length - 2];
+      } else {
+        githubUser = githubArray[length - 1];
+      }
+    }
+    return githubUser;
+  };
+
+  const handleClickCreateCard = () => {
+    const linkedinUser = getLinkedinUser();
+    const githubUser = getGithubUser();
+
+    const cleanData = { ...data, linkedin: linkedinUser, github: githubUser };
+setIsLoading(true)
+    callToApi(cleanData).then((response) =>{
+       setCardResponseFetch(response)
+       setIsLoading(false)});
+ 
+  };
 
   return (
     <div>
@@ -121,7 +156,10 @@ function App() {
               cardResponseFetch={cardResponseFetch}
               handleClickReset={handleClickReset}
               getLinkedinUser={getLinkedinUser}
-              getGithubUser={getGithubUser}></Card>}></Route>
+              getGithubUser={getGithubUser}
+              isLoading={isLoading}
+
+              ></Card>}></Route>
       </Routes>
 
       <Footer></Footer>
