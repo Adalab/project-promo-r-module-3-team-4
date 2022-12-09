@@ -1,6 +1,11 @@
 
 import './../styles/layout/Share.scss'
+import Loading from './Loading';
+
+
 const Share = (props) => {
+ 
+
   const handleClickShare = (ev) => {
     props.handleClickShare();
   };

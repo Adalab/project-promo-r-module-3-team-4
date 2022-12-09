@@ -10,6 +10,7 @@ import Landing from './Landing';
 import Card from './Card';
 import Footer from './Footer';
 import {Route, Routes} from 'react-router-dom';
+import Loading from './Loading';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
   const [errorPhone, setErrorPhone] = useState(false);
   const [errorEmail, setErrorEmail] = useState(false);
   const [cardResponseFetch, setCardResponseFetch] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   // /*****FUNCIONES MANEJADORAS DE EVENTOS*****/
   const handleSubmit = (ev) => {
@@ -56,17 +58,6 @@ function App() {
         setErrorEmail(true);
       }
     }
-    // else if (inputName === 'linkedin') {
-    //   const linkedinArray = inputValue.split('/');
-    //   const length = linkedinArray.length;
-    //   if (inputValue.endsWith('/')) {
-    //     inputValue = linkedinArray[length - 2];
-    //   } else {
-    //     inputValue = linkedinArray[length - 1];
-    //   }
-    // } else if (inputName === 'github') {
-    //   inputValue = inputValue.replace('@', '');
-    // }
     setData({ ...data, [inputName]: inputValue });
   };
 
