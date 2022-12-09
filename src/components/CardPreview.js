@@ -16,8 +16,6 @@ function CardPreview(props) {
       return defaultText;
     }
   };
-  const linkedinUrl = `https://www.linkedin.com/in/${props.getLinkedinUser()}`;
-  const githubUrl = `https://github.com/${props.getGithubUser()}`;
 
   return (
     <article
@@ -33,11 +31,7 @@ function CardPreview(props) {
         style={{ backgroundImage: `url(${photo})` }}></div>
       <ul className="preview__icons">
         <li>
-          <a
-            href={`tel:${props.data.phone}`}
-            target="_blank"
-            className="telephone"
-            rel="noreferrer">
+          <a href={`tel:${props.data.phone}`} className="telephone">
             <i className="fa-solid fa-mobile-screen-button preview__icons--color"></i>
           </a>
         </li>
@@ -45,26 +39,17 @@ function CardPreview(props) {
           <a
             href={`mailto:${props.data.email}`}
             target="_blank"
-            className="emailadress"
-            rel="noreferrer">
+            className="emailadress">
             <i className="fa-regular fa-envelope preview__icons--color"></i>
           </a>
         </li>
         <li>
-          <a
-            href={linkedinUrl}
-            target="_blank"
-            className="linkedin"
-            rel="noreferrer">
+          <a href={props.data.linkedin} target="_blank" className="linkedin">
             <i className="fa-brands fa-linkedin-in preview__icons--color"></i>
           </a>
         </li>
         <li>
-          <a
-            href={githubUrl}
-            target="_blank"
-            className="github"
-            rel="noreferrer">
+          <a href={props.data.github} target="_blank" className="github">
             <i className="fa-brands fa-github-alt preview__icons--color"></i>
           </a>
         </li>

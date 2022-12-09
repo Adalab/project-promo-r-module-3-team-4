@@ -1,0 +1,47 @@
+@import '../core/variables';
+.loading {
+  // position: fixed;
+  top: 2rem;
+  left: 2rem;
+  display: block;
+  width: 6rem;
+  height: 4rem;
+  border: 0.25rem solid $color-orange;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation-name: beat;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  align-self: center;
+
+  &.hidden {
+    opacity: 0;
+  }
+}
+
+@keyframes beat {
+  0% {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  20% {
+    width: 2rem;
+    height: 2rem;
+  }
+  40% {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  60% {
+    width: 2rem;
+    height: 2rem;
+  }
+  80% {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  100% {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
