@@ -2,10 +2,13 @@
 @import '../core/mixins';
 @import '../core/function';
 @import '../core/variables';
+@import '../components/jsarrow';
+
 .form {
   padding-left: rem(20);
   padding-right: rem(20);
   text-align: center;
+
   // Hemos quitado la línea que se ve encima del footer
   // border-bottom: rem(1) solid $color-lineFormulary;
 
@@ -25,21 +28,20 @@
     }
   }
 
-  &__box {
-    background-color: $color-orange;
-    border-radius: rem(12);
-    padding: rem(13) rem(18) rem(13) rem(17);
-    display: inline-flex;
-    align-self: center;
-    margin-bottom: rem(30);
-
+  &__create {
     &--button {
+      display: inline-flex;
+      align-self: center;
+      gap: 5px;
       background-color: $color-orange;
       font-family: $font-Open;
       text-transform: uppercase;
       color: $color-whireOriginal;
       border: none;
+      border-radius: rem(12);
+      padding: rem(13) rem(18) rem(13) rem(17);
       margin-left: rem(5);
+      margin-bottom: rem(30);
     }
 
     &--icon {
@@ -57,20 +59,20 @@
 }
 
 .container__twitter {
-  background-color: $color-azure;
-  border-radius: rem(3);
-  padding: rem(3) rem(9) rem(6) rem(10.5);
-  margin: 0 auto;
-  margin-top: rem(10);
-  box-shadow: 0 0 rem(4) 0 rgba(0, 0, 0, 0.32);
-  margin-bottom: rem(30);
+  display: grid;
+  place-items: center;
 
   &__btn {
     font-family: $font-Open;
     font-size: rem(14);
     color: $color-whireOriginal;
-    border: none;
     background-color: $color-azure;
+    box-shadow: 0 0 rem(4) 0 rgba(0, 0, 0, 0.32);
+    border: none;
+    border-radius: rem(3);
+    padding: rem(3) rem(9) rem(6) rem(10.5);
+    margin-top: rem(10);
+    margin-bottom: rem(30);
     margin-left: rem(5);
   }
 
@@ -81,29 +83,6 @@
 
 .successBtn {
   background-color: $color-BackButton;
-}
-
-.container__twitter {
-  background-color: $color-azure;
-  border-radius: rem(3);
-  padding: rem(3) rem(9) rem(6) rem(10.5);
-  margin: 0 auto;
-  margin-top: rem(10);
-  box-shadow: 0 0 rem(4) 0 rgba(0, 0, 0, 0.32);
-  margin-bottom: rem(30);
-
-  &__btn {
-    font-family: $font-Open;
-    font-size: rem(14);
-    color: $color-whireOriginal;
-    border: none;
-    background-color: $color-azure;
-    margin-left: rem(5);
-  }
-
-  &__icon {
-    color: $color-whireOriginal;
-  }
 }
 
 .CardContainer {
