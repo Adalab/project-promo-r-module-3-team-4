@@ -9,9 +9,7 @@ import callToApi from '../services/api';
 import Landing from './Landing';
 import Card from './Card';
 import Footer from './Footer';
-import {Route, Routes} from 'react-router-dom';
-import Loading from './Loading';
-
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   // /****VARIABLES****/
@@ -30,7 +28,6 @@ function App() {
   const [errorPhone, setErrorPhone] = useState(false);
   const [errorEmail, setErrorEmail] = useState(false);
   const [cardResponseFetch, setCardResponseFetch] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
 
   // /*****FUNCIONES MANEJADORAS DE EVENTOS*****/
   const handleSubmit = (ev) => {
@@ -125,11 +122,8 @@ function App() {
     const githubUser = getGithubUser();
 
     const cleanData = { ...data, linkedin: linkedinUser, github: githubUser };
-setIsLoading(true)
-    callToApi(cleanData).then((response) =>{
-       setCardResponseFetch(response)
-       setIsLoading(false)});
- 
+
+    callToApi(cleanData).then((response) => setCardResponseFetch(response));
   };
 
   return (
@@ -156,10 +150,7 @@ setIsLoading(true)
               cardResponseFetch={cardResponseFetch}
               handleClickReset={handleClickReset}
               getLinkedinUser={getLinkedinUser}
-              getGithubUser={getGithubUser}
-              isLoading={isLoading}
-
-              ></Card>}></Route>
+              getGithubUser={getGithubUser}></Card>}></Route>
       </Routes>
 
       <Footer></Footer>
