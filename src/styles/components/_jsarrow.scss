@@ -1,6 +1,11 @@
-.legend--arrow {
+.arrow {
   @include arrow__expand;
 }
+
+.arrow-up {
+  transform: rotate(180deg);
+}
+
 .collapse {
   display: none;
 }

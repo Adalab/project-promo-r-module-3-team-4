@@ -1,9 +1,15 @@
 import '../styles/layout/Fill.scss';
+import ImageReader from './ImageReader';
 
 const Fill = (props) => {
   const handleChange = (ev) => {
     props.handleInput({ name: ev.target.name, value: ev.target.value });
   };
+
+  const handleImage = (imageData) => {
+    props.handleImage(imageData);
+  };
+
   const handleClickFill = (ev) => {
     props.handleClickFill();
   };
@@ -25,8 +31,10 @@ const Fill = (props) => {
         <legend className="fill__legend">
           <i className="fa-regular fa-keyboard fill__legend--icon"></i> Rellena
         </legend>
-        <i className="fa-solid fa-angle-up collapse legend--arrow--up"></i>
-        <i className="fa-solid fa-angle-down legend--arrow--down"></i>
+        <i
+          className={`fa-solid fa-angle-down arrow ${
+            props.activeSection === 'fill' ? 'arrow-up' : ''
+          }`}></i>
       </div>
 
       <div
@@ -66,26 +74,7 @@ const Fill = (props) => {
             value={props.data.job}
           />
         </label>
-        <label
-          htmlFor="profile-image"
-          className="fill__label fill__label--profileimage">
-          <div className="fill__label__container ">
-            <label
-              className="fill__label__container--button"
-              htmlFor="img-selector">
-              Añadir imagen
-            </label>
-            <input
-              type="file"
-              name="photo"
-              id="img-selector"
-              className="action__hiddenField js__profile-upload-btn js_input_photo fill__label__text--profileimage collapse"
-              required
-            />
-
-            <div className="fill__label__container--box js__profile-preview"></div>
-          </div>
-        </label>
+        <ImageReader photo={props.data.photo} handleImage={handleImage} />
         <label htmlFor="email" className="fill__label fill__label--email">
           <span className="fill__label__text--email">
             Email<span className="asterisc">*</span>

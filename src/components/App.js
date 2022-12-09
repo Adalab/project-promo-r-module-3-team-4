@@ -1,7 +1,7 @@
 //styles
 import '../styles/App.scss';
 //images
-import profilePhoto from '../images/cat-programming.jpg';
+//import profilePhoto from '../images/cat-programming.jpg';
 //services
 import { useState } from 'react';
 import callToApi from '../services/api';
@@ -9,8 +9,8 @@ import callToApi from '../services/api';
 import Landing from './Landing';
 import Card from './Card';
 import Footer from './Footer';
-import {Route, Routes} from 'react-router-dom';
-
+import { Route, Routes } from 'react-router-dom';
+import Loading from './Loading';
 
 function App() {
   // /****VARIABLES****/
@@ -22,13 +22,14 @@ function App() {
     email: '',
     linkedin: '',
     github: '',
-    photo: profilePhoto,
+    photo: '',
   });
 
   const [activeSection, setActiveSection] = useState('design');
   const [errorPhone, setErrorPhone] = useState(false);
   const [errorEmail, setErrorEmail] = useState(false);
   const [cardResponseFetch, setCardResponseFetch] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   // /*****FUNCIONES MANEJADORAS DE EVENTOS*****/
   const handleSubmit = (ev) => {
@@ -56,18 +57,12 @@ function App() {
         setErrorEmail(true);
       }
     }
-    // else if (inputName === 'linkedin') {
-    //   const linkedinArray = inputValue.split('/');
-    //   const length = linkedinArray.length;
-    //   if (inputValue.endsWith('/')) {
-    //     inputValue = linkedinArray[length - 2];
-    //   } else {
-    //     inputValue = linkedinArray[length - 1];
-    //   }
-    // } else if (inputName === 'github') {
-    //   inputValue = inputValue.replace('@', '');
-    // }
     setData({ ...data, [inputName]: inputValue });
+  };
+
+  const handleImage = (imageData) => {
+    console.log(imageData);
+    setData({ ...data, photo: imageData });
   };
 
   const handleClickReset = () => {
@@ -81,6 +76,7 @@ function App() {
       github: '',
       photo: '',
     });
+    setCardResponseFetch({});
   };
 
   const handleClickDesign = () => {
@@ -95,34 +91,76 @@ function App() {
     setActiveSection('share');
   };
 
-  const handleClickCreateCard = () => {
-    callToApi(data).then((response) => setCardResponseFetch(response));
+  const getLinkedinUser = () => {
+    const linkedinArray = data.linkedin.split('/');
+    let linkedinUser = data.linkedin;
+    const length = linkedinArray.length;
+    if (data.linkedin.endsWith('/')) {
+      linkedinUser = linkedinArray[length - 2];
+    } else {
+      linkedinUser = linkedinArray[length - 1];
+    }
+    return linkedinUser;
   };
 
+  const getGithubUser = () => {
+    let githubUser = data.github;
+    if (data.github.startsWith('@')) {
+      githubUser = data.github.replace('@', '');
+    } else if (data.github.includes('/')) {
+      const githubArray = data.github.split('/');
+      const length = githubArray.length;
+      if (data.github.endsWith('/')) {
+        githubUser = githubArray[length - 2];
+      } else {
+        githubUser = githubArray[length - 1];
+      }
+    }
+    return githubUser;
+  };
+
+  const handleClickCreateCard = () => {
+    const linkedinUser = getLinkedinUser();
+    const githubUser = getGithubUser();
+
+    const cleanData = { ...data, linkedin: linkedinUser, github: githubUser };
+
+    setIsLoading(true);
+
+    callToApi(cleanData).then((response) => {
+      setCardResponseFetch(response);
+      setIsLoading(false);
+    });
+  };
 
   return (
     <div>
-
       <Routes>
-            <Route path='/' element={<Landing></Landing>}></Route>
+        <Route path="/" element={<Landing></Landing>}></Route>
 
-            
-            <Route path='/card' element={<Card
-            handleInput={handleInput}
-            handleClickDesign={handleClickDesign}
-            palette={data.palette}
-            activeSection={activeSection} 
-            handleClickFill={handleClickFill}
-            data={data}
-            errorPhone={errorPhone}
-            errorEmail={errorEmail}
-            handleClickCreateCard={handleClickCreateCard}
-            handleClickShare={handleClickShare}
-            cardResponseFetch={cardResponseFetch}
-            handleClickReset={handleClickReset}></Card>}>
-
-          </Route>
-          </Routes>
+        <Route
+          path="/card"
+          element={
+            <Card
+              handleSubmit={handleSubmit}
+              handleInput={handleInput}
+              handleImage={handleImage}
+              handleClickDesign={handleClickDesign}
+              palette={data.palette}
+              activeSection={activeSection}
+              handleClickFill={handleClickFill}
+              data={data}
+              errorPhone={errorPhone}
+              errorEmail={errorEmail}
+              handleClickCreateCard={handleClickCreateCard}
+              handleClickShare={handleClickShare}
+              cardResponseFetch={cardResponseFetch}
+              handleClickReset={handleClickReset}
+              getLinkedinUser={getLinkedinUser}
+              getGithubUser={getGithubUser}
+              isLoading={isLoading}></Card>
+          }></Route>
+      </Routes>
 
       <Footer></Footer>
     </div>
