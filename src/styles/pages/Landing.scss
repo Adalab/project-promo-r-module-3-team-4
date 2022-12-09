@@ -10,42 +10,46 @@
   justify-content: center;
   align-items: center;
   background-color: $color-whiteGround;
-  margin-bottom: rem(7);
+  padding-left: rem(25.6);
+  padding-right: rem(26.4);
   @include tablet {
-    height: 90vh;
+    height: rem(963);
+    padding: 0 rem(174) rem(60) rem(175);
   }
   &__img {
     width: rem(250);
     height: rem(63);
-    margin-top: rem(130);
+    margin-top: rem(95);
     margin-top: 10%;
-    margin-bottom: rem(40);
+    margin-bottom: rem(35.4);
     @include tablet {
-      margin-top: rem(80);
-      width: rem(450);
-      height: rem(126);
+      margin-top: rem(350);
+      width: rem(419);
+      height: rem(105);
+      margin-bottom: rem(31);
     }
   }
   &__title {
     color: $color-orange;
     font-family: $font-Merri;
     font-weight: 900;
-    font-size: rem(20);
-    margin-bottom: rem(-10);
+    font-size: rem(19.2);
+    margin-bottom: rem(5);
     @include tablet {
-      font-size: rem(30);
+      font-size: rem(24);
     }
   }
   &__text {
     color: $color-darkGreen;
     font-family: $font-Open;
     font-size: rem(12.8);
-    white-space: pre-line;
-    margin-bottom: rem(20);
+    
+    margin-bottom: rem(17.8);
     text-align: center;
+    line-height: rem(15);
     @include tablet {
-      font-size: rem(20);
-      line-height: rem(25);
+      font-size: rem(16);
+      line-height: rem(20);
     }
   }
 
@@ -53,15 +57,17 @@
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: repeat(3, 1fr);
-    border: solid rem(1.6) #f2e1d9;
-    border-radius: rem(4);
-    gap: rem(10);
-    padding: rem(12) rem(8) rem(12.8) rem(8);
-    margin-top: rem(36);
-    margin-bottom: rem(65);
+    border: solid rem(1.6) $color-orange;
+    border-radius: rem(5);
+    gap: rem(24);
+    padding: rem(15) rem(20) rem(17.8) rem(20);
+    margin-top: rem(17.8);
+    margin-bottom: rem(38.6);
     @include tablet {
-      padding: rem(30) rem(40) rem(36) rem(40);
-      border: solid rem(4) #f2e1d9;
+      padding: rem(15) rem(31.5) rem(22) rem(31.5);
+      border: solid rem(2) $color-orange;
+      gap: rem(51.5);
+      margin-bottom: rem(186);
     }
     &--item {
       display: flex;
@@ -70,11 +76,12 @@
       align-items: center;
       color: $color_gunMetal;
       font-family: $font-Open;
+      font-size: rem(12.8);
       text-align: center;
       min-width: 25%;
       gap: rem(5);
       @include tablet {
-        font-size: rem(30);
+        font-size: rem(16);
       }
     }
     &--icon {
@@ -90,15 +97,14 @@
     color: white;
     font-size: rem(16);
     background-color: $color-start;
-    padding: rem(10) rem(20);
+    padding: rem(10) rem(20) rem(10) rem(20);
     border-radius: rem(50);
     text-decoration: none;
     text-transform: uppercase;
-    margin-bottom: rem(45);
-    @include tablet {
-      font-size: rem(25);
-      padding: rem(20) rem(40);
-      margin-bottom: rem(5);
+   @include tablet {
+      font-size: rem(16);
+      padding: rem(10) rem(20.5);
+      
     }
   }
 }
