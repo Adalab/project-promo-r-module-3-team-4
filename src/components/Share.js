@@ -1,4 +1,6 @@
 import './../styles/layout/Share.scss';
+import Loading from './Loading';
+
 const Share = (props) => {
   const handleClickShare = (ev) => {
     props.handleClickShare();
@@ -33,6 +35,9 @@ const Share = (props) => {
           <i className="fa-regular fa-address-card form__create--icon"></i>
           Crear tarjeta
         </button>
+
+        {props.isLoading ? <Loading /> : ''}
+
         <div
           className={`CardContainer js_card_container ${
             props.cardResponseFetch ? '' : 'collapse'
