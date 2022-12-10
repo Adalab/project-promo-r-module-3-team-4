@@ -60,4 +60,65 @@
       padding: rem(5);
     }
   }
+  &__card--flowers{
+    width: 100%;
+    display:flex;
+    align-items:center;
+    justify-content: space-around;
+    position:absolute;
+    top:0;
+  }
+  @keyframes __card--flowers{
+    0%{
+      transform: translateY(0);
+      opacity: 0;
+    }
+    50%{
+      
+      opacity: 1;
+    }
+    70%{
+      
+      opacity: 1;
+    }
+    100%{
+      transform: translateY(80vh);
+      opacity: 0;
+    }
+
+  }
+
+  &__card--flowers img{
+    width: 50px;
+    animation: __card--flowers 7s linear infinite;
+  }
+
+}
+
+.preview__card--flowers img:nth-child(1){
+  animation-delay: 2s;
+}
+.preview__card--flowers img:nth-child(2){
+  animation-delay: 1s;
+}
+.preview__card--flowers img:nth-child(3){
+  animation-delay: 3s;
+}
+.preview__card--flowers img:nth-child(4){
+  animation-delay: 4.5s;
+}
+.preview__card--flowers img:nth-child(6){
+  animation-delay: 3s;
+}
+.preview__card--flowers img:nth-child(7){
+  animation-delay: 6s;
+}
+.preview__card--flowers img:nth-child(8){
+  animation-delay: 7s;
+}
+.preview__card--flowers img:nth-child(9){
+  animation-delay: 1.5s;
+}
+.preview__card--flowers img:nth-child(10){
+  animation-delay: 2s;
 }

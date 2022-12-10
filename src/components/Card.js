@@ -8,6 +8,17 @@ import './../styles/layout/Card.scss';
 const Card = (props) => {
   return (
     <>
+      <div className="preview__card--flowers">
+        <img alt="carnation flower" src="../images/flowers.png"/>
+        <img alt="carnation flower" src="../images/flowers.png"/>
+        <img alt="carnation flower" src="../images/flowers.png"/>
+        <img alt="carnation flower" src="../images/flowers.png"/>
+        <img alt="carnation flower" src="../images/flowers.png"/>
+        <img alt="carnation flower" src="../images/flowers.png"/>
+        <img alt="carnation flower" src="../images/flowers.png"/>
+        <img alt="carnation flower" src="../images/flowers.png"/>
+        <img alt="carnation flower" src="../images/flowers.png"/>
+      </div>
       <Header />
       <main className="mainCreate">
         <section className="preview ">
