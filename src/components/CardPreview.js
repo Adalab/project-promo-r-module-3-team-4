@@ -23,6 +23,7 @@ function CardPreview(props) {
   const githubUrl = `https://github.com/${props.getGithubUser()}`;
 
   return (
+  
     <article
       className={`preview__container js-mother-of-palettes palette-${props.data.palette}`}>
       <h2 className="preview__name">
