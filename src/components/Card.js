@@ -5,19 +5,20 @@ import Fill from './Fill';
 import Share from './Share';
 import Reset from './Reset';
 import './../styles/layout/Card.scss';
+import flower from '../images/flower2.png'
 const Card = (props) => {
   return (
     <>
       <div className="preview__card--flowers">
-        <img alt="carnation flower" src="../images/flowers.png"/>
-        <img alt="carnation flower" src="../images/flowers.png"/>
-        <img alt="carnation flower" src="../images/flowers.png"/>
-        <img alt="carnation flower" src="../images/flowers.png"/>
-        <img alt="carnation flower" src="../images/flowers.png"/>
-        <img alt="carnation flower" src="../images/flowers.png"/>
-        <img alt="carnation flower" src="../images/flowers.png"/>
-        <img alt="carnation flower" src="../images/flowers.png"/>
-        <img alt="carnation flower" src="../images/flowers.png"/>
+        <img alt="carnation flower" src={flower}/>
+        <img alt="carnation flower" src={flower}/>
+        <img alt="carnation flower" src={flower}/>
+        <img alt="carnation flower" src={flower}/>
+        <img alt="carnation flower" src={flower}/>
+        <img alt="carnation flower" src={flower}/>
+        <img alt="carnation flower" src={flower}/>
+        <img alt="carnation flower" src={flower}/>
+        <img alt="carnation flower" src={flower}/>
       </div>
       <Header />
       <main className="mainCreate">

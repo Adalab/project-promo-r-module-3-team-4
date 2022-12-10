@@ -1,6 +1,7 @@
 //styles
 import '../styles/App.scss';
 //images
+import flower from '../images/flowers.png'
 //import profilePhoto from '../images/cat-programming.jpg';
 //services
 import { useState } from 'react';
@@ -11,6 +12,7 @@ import Card from './Card';
 import Footer from './Footer';
 import { Route, Routes } from 'react-router-dom';
 import Loading from './Loading';
+
 
 function App() {
   // /****VARIABLES****/
