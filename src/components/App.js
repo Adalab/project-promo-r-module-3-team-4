@@ -10,7 +10,7 @@ import Landing from './Landing';
 import Card from './Card';
 import Footer from './Footer';
 import { Route, Routes } from 'react-router-dom';
-import Loading from './Loading';
+
 
 function App() {
   // /****VARIABLES****/

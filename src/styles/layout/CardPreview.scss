@@ -4,7 +4,6 @@
 @import '../core/variables';
 
 .preview {
-
   &__container {
     background-color: $color-whireOriginal;
     display: flex;
@@ -60,4 +59,8 @@
       padding: rem(5);
     }
   }
+}
+.logoplus {
+  width: 60px;
+  height: 40px;
 }

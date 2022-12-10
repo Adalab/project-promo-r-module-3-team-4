@@ -2,6 +2,9 @@ import '../styles/layout/CardPreview.scss';
 import defaultPhoto1 from '../images/preview-girl.png';
 import defaultPhoto2 from '../images/cat-programming.jpg';
 import defaultPhoto3 from '../images/logo-adalab.png';
+import { NavLink } from 'react-router-dom';
+
+import logoCards from '../images/logo-awesome.svg';
 
 function CardPreview(props) {
   const defaultPhotos = [defaultPhoto1, defaultPhoto2, defaultPhoto3];
@@ -67,6 +70,14 @@ function CardPreview(props) {
             rel="noreferrer">
             <i className="fa-brands fa-github-alt preview__icons--color"></i>
           </a>
+        </li>
+        <li>
+          <NavLink
+            to="/"
+            className="github"
+            rel="noreferrer">
+            <img className="preview__icons--color logoplus" src={logoCards} alt="logoDeshacer" />
+          </NavLink>
         </li>
       </ul>
     </article>
