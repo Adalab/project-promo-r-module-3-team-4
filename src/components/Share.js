@@ -36,7 +36,7 @@ const Share = (props) => {
           Crear tarjeta
         </button>
 
-        {props.isLoading ? <Loading /> : ''}
+        
 
         <div
           className={`CardContainer js_card_container ${
@@ -65,9 +65,11 @@ const Share = (props) => {
                 <i className="fa-brands fa-twitter container__twitter__icon"></i>
                 Compartir en twitter
               </a>
+              
             </div>
           )}
         </div>
+        {props.isLoading ? <Loading /> : ''}
       </div>
 
       <div className="border_button"></div>
