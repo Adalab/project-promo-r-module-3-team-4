@@ -1,11 +1,13 @@
 @import '../core/variables';
 
 .loading {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid $color-orange; /* Blue */
+  border: 16px solid #f3f3f3;
+  /* Light grey */
+  border-top: 16px solid $color-orange;
+  /* Blue */
   border-radius: 60%;
-  width: 120px;
-  height: 120px;
+  width: 4rem;
+  height: 4rem;
   animation: spin 0.5s linear infinite;
 }
 
@@ -13,10 +15,12 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
+
 // .loading {
 //   // position: fixed;
 //   top: 2rem;
