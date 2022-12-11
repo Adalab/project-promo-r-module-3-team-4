@@ -2,6 +2,7 @@
 @import '../core/mixins';
 @import '../core/function';
 @import '../core/variables';
+
 .footer {
   display: flex;
   flex-direction: column;
@@ -18,16 +19,19 @@
     padding-left: rem(41);
     padding-right: rem(40);
   }
+
   &__text {
     font-size: rem(14);
     font-family: $font-Open;
     color: $color_footer;
     opacity: 0.5;
     margin-bottom: rem(12);
-    @include tablet{
+
+    @include tablet {
       margin-bottom: 0;
     }
   }
+
   &__box {
     &--logo {
       width: rem(103);
