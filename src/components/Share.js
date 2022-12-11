@@ -62,7 +62,7 @@ const Share = (props) => {
                 data-size="large"
                 target="_blank"
                 rel="noreferrer">
-                <i class="fa-brands fa-twitter container__twitter__icon"></i>
+                <i className="fa-brands fa-twitter container__twitter__icon"></i>
                 Compartir en twitter
               </a>
             </div>
