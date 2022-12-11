@@ -1,9 +1,22 @@
 import './../styles/pages/Landing.scss'
 import { NavLink } from 'react-router-dom';
 import logoCards from '../images/logo-awesome.svg';
+import flower from '../images/flower2.png';
 const Landing = () => {
     return (
+
         <main className="main">
+        <div className="preview__card--flowers">
+        <img alt="carnation flower" src={flower}/>
+        <img alt="carnation flower" src={flower}/>
+        <img alt="carnation flower" src={flower}/>
+        <img alt="carnation flower" src={flower}/>
+        <img alt="carnation flower" src={flower}/>
+        <img alt="carnation flower" src={flower}/>
+        <img alt="carnation flower" src={flower}/>
+        <img alt="carnation flower" src={flower}/>
+        <img alt="carnation flower" src={flower}/>
+      </div>
     <img src={logoCards} alt="Logo principal" className="main__img"/>
     <h1 className="main__title">
         Crea tu tarjeta de visita
