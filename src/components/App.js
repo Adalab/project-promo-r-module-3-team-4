@@ -67,7 +67,6 @@ function App() {
   };
 
   const handleImage = (imageData) => {
-    console.log(imageData);
     setData({ ...data, photo: imageData });
   };
 
