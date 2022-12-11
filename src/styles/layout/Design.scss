@@ -64,55 +64,16 @@
       }
     }
 
-    &__green {
-      padding-right: 25vw;
-      padding-bottom: 8vw;
-      background-image: url(../../images/palettes/palette-one.png);
-      background-size: contain;
-
-      @include tablet {
-        padding-right: 15vw;
-        padding-bottom: 5vw;
-      }
-
-      @include desktop {
-        padding-right: 10vw;
-        padding-bottom: 3vw;
-      }
+    &__1 {
+      display: flex;
     }
 
-    &__red {
-      padding-right: 25vw;
-      padding-bottom: 8vw;
-      background-image: url(../../images/palettes/palette-two.png);
-      background-size: contain;
-
-      @include tablet {
-        padding-right: 15vw;
-        padding-bottom: 5vw;
-      }
-
-      @include desktop {
-        padding-right: 10vw;
-        padding-bottom: 3vw;
-      }
+    &__2 {
+      display: flex;
     }
 
-    &__grey {
-      padding-right: 25vw;
-      padding-bottom: 8vw;
-      background-image: url(../../images/palettes/palette-three.png);
-      background-size: contain;
-
-      @include tablet {
-        padding-right: 15vw;
-        padding-bottom: 5vw;
-      }
-
-      @include desktop {
-        padding-right: 10vw;
-        padding-bottom: 3vw;
-      }
+    &__3 {
+      display: flex;
     }
   }
 }
@@ -120,3 +81,65 @@
 .border_button {
   @include border_button;
 }
+
+/**************START RADIO BUTTONS PALETTES***************/
+/*START First radio button*/
+.dark-green {
+  background-color: $color-darkGreen;
+  width: 30px;
+  height: 25px;
+}
+
+.dirty-blue {
+  background-color: $color-dirty-blue;
+  width: 30px;
+  height: 25px;
+}
+
+.hospital-green {
+  background-color: $color-hospital-green;
+  width: 30px;
+  height: 25px;
+}
+
+/*START Second radio button*/
+
+.dried-blood {
+  background-color: $color-blood;
+  width: 30px;
+  height: 25px;
+}
+
+.rusty-red {
+  background-color: $color-rustyRed;
+  width: 30px;
+  height: 25px;
+}
+
+.tomato {
+  background-color: $color-tomate;
+  width: 30px;
+  height: 25px;
+}
+
+/*START Third radio button*/
+
+.slate {
+  background-color: $color-slate;
+  width: 30px;
+  height: 25px;
+}
+
+.faded-orange {
+  background-color: $color-fadedOrange;
+  width: 30px;
+  height: 25px;
+}
+
+.light-grey-blue {
+  background-color: $color-lightGrey;
+  width: 30px;
+  height: 25px;
+}
+
+/**************END RADIO BUTTONS PALETTES***************/
