@@ -5,6 +5,9 @@
 @import '../components/jsarrow';
 
 .container-form {
+
+  max-width: 673px;
+
   @include tablet {
     flex-grow: 2;
   }
@@ -54,7 +57,7 @@
       align-items: flex-end;
       gap: rem(20);
       margin-top: rem(15);
-      
+
 
       &--colors {
         display: flex;
