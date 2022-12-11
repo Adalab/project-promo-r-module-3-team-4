@@ -36,10 +36,10 @@ const Design = (props) => {
               onChange={handleChange}
               checked={props.palette === '1'}
             />
-            <div class="design__palette__1">
-              <div class="design__palette__1--color dark-green"></div>
-              <div class="design__palette__1--color dirty-blue"></div>
-              <div class="design__palette__1--color hospital-green"></div>
+            <div className="design__palette__1">
+              <div className="design__palette__1--color dark-green"></div>
+              <div className="design__palette__1--color dirty-blue"></div>
+              <div className="design__palette__1--color hospital-green"></div>
             </div>
           </label>
           <label htmlFor="red" className="design__palette__radio--colors">
@@ -52,10 +52,10 @@ const Design = (props) => {
               onChange={handleChange}
               checked={props.palette === '2'}
             />
-            <div class="design__palette__2">
-              <div class="design__palette__2--color dried-blood"></div>
-              <div class="design__palette__2--color rusty-red"></div>
-              <div class="design__palette__2--color tomato"></div>
+            <div className="design__palette__2">
+              <div className="design__palette__2--color dried-blood"></div>
+              <div className="design__palette__2--color rusty-red"></div>
+              <div className="design__palette__2--color tomato"></div>
             </div>
           </label>
           <label htmlFor="grey" className="design__palette__radio--colors">
@@ -68,10 +68,10 @@ const Design = (props) => {
               onChange={handleChange}
               checked={props.palette === '3'}
             />
-            <div class="design__palette__3">
-              <div class="design__palette__3--color slate"></div>
-              <div class="design__palette__3--color faded-orange"></div>
-              <div class="design__palette__3--color light-grey-blue"></div>
+            <div className="design__palette__3">
+              <div className="design__palette__3--color slate"></div>
+              <div className="design__palette__3--color faded-orange"></div>
+              <div className="design__palette__3--color light-grey-blue"></div>
             </div>
           </label>
         </div>
