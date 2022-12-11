@@ -19,13 +19,13 @@
 
 .design {
   padding: rem(27) rem(20) rem(10) rem(20);
-  cursor: pointer;
   //border-bottom: rem(1) solid $color-lineFormulary;
 
   &__title {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    cursor: pointer;
   }
 
   &__legend {
