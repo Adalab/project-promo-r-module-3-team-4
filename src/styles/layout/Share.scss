@@ -28,6 +28,11 @@
   }
 
   &__create {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     &--button {
       display: inline-flex;
       align-self: center;
