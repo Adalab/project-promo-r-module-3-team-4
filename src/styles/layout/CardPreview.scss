@@ -4,7 +4,6 @@
 @import '../core/variables';
 
 .preview {
-
   &__container {
     background-color: $color-whireOriginal;
     display: flex;
@@ -60,6 +59,7 @@
       padding: rem(5);
     }
   }
+
   &__card--flowers{
     width: 100%;
     display:flex;
@@ -122,3 +122,9 @@
 .preview__card--flowers img:nth-child(10){
   animation-delay: 2s;
 }
+
+.logoplus {
+  width: 60px;
+  height: 40px;
+}
+
