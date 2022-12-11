@@ -1,8 +1,5 @@
 //styles
 import '../styles/App.scss';
-//images
-import flower from '../images/flowers.png'
-//import profilePhoto from '../images/cat-programming.jpg';
 //services
 import { useState } from 'react';
 import callToApi from '../services/api';
@@ -11,27 +8,34 @@ import Landing from './Landing';
 import Card from './Card';
 import Footer from './Footer';
 import { Route, Routes } from 'react-router-dom';
-
-
+import ls from '../services/localStorage';
+import { useEffect } from 'react';
 
 function App() {
   // /****VARIABLES****/
-  const [data, setData] = useState({
-    palette: '1',
-    name: '',
-    job: '',
-    phone: '',
-    email: '',
-    linkedin: '',
-    github: '',
-    photo: '',
-  });
+  const [data, setData] = useState(
+    ls.get('data', {
+      palette: '1',
+      name: '',
+      job: '',
+      phone: '',
+      email: '',
+      linkedin: '',
+      github: '',
+      photo: '',
+    })
+  );
 
   const [activeSection, setActiveSection] = useState('design');
   const [errorPhone, setErrorPhone] = useState(false);
   const [errorEmail, setErrorEmail] = useState(false);
   const [cardResponseFetch, setCardResponseFetch] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+
+  //Effects
+  useEffect(() => {
+    ls.set('data', data);
+  }, [data]);
 
   // /*****FUNCIONES MANEJADORAS DE EVENTOS*****/
   const handleSubmit = (ev) => {

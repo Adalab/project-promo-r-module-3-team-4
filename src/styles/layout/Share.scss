@@ -5,8 +5,7 @@
 @import '../components/jsarrow';
 
 .form {
-  padding-left: rem(20);
-  padding-right: rem(20);
+  padding: 0 rem(20) rem(10) rem(20);
   text-align: center;
 
   // Hemos quitado la línea que se ve encima del footer
@@ -17,7 +16,7 @@
   &__share {
     display: flex;
     justify-content: space-between;
-    margin-bottom: rem(30);
+    cursor: pointer;
   }
 
   &__legend {
@@ -41,7 +40,8 @@
       border-radius: rem(12);
       padding: rem(13) rem(18) rem(13) rem(17);
       margin-left: rem(5);
-      margin-bottom: rem(30);
+      margin-top: rem(30);
+      cursor: pointer;
     }
 
     &--icon {
