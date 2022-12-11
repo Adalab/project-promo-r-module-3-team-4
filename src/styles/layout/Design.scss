@@ -5,6 +5,9 @@
 @import '../components/jsarrow';
 
 .container-form {
+
+  max-width: 673px;
+
   @include tablet {
     flex-grow: 2;
   }
@@ -15,10 +18,8 @@
 }
 
 .design {
-  padding-left: rem(20);
-  padding-right: rem(20);
-  padding-top: rem(20);
-  padding-bottom: rem(30);
+  padding: rem(27) rem(20) rem(10) rem(20);
+  cursor: pointer;
   //border-bottom: rem(1) solid $color-lineFormulary;
 
   &__title {
@@ -56,6 +57,7 @@
       align-items: flex-end;
       gap: rem(20);
       margin-top: rem(15);
+
 
       &--colors {
         display: flex;
