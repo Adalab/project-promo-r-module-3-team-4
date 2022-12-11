@@ -2,7 +2,6 @@
 @import '../core/mixins';
 @import '../core/function';
 @import '../core/variables';
-@import '../components/jsarrow';
 
 .form {
   padding: 0 rem(20) rem(10) rem(20);
@@ -114,3 +113,5 @@
     margin: rem(5) auto;
   }
 }
+
+@import '../components/jsarrow';
